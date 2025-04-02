@@ -1,0 +1,73 @@
+[
+  {
+    "href": "/actuator/gateway/routedefinitions",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/globalfilters",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/routefilters",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/routes/user-service/combinedfilters",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/routes/order-service/combinedfilters",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/routes",
+    "methods": [
+      "POST",
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/routes/user-service",
+    "methods": [
+      "POST",
+      "DELETE",
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/routes/order-service",
+    "methods": [
+      "POST",
+      "DELETE",
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/routepredicates",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "href": "/actuator/gateway/refresh",
+    "methods": [
+      "POST"
+    ]
+  }
+]

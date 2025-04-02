@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: tpv-gateway
+  profiles:
+  # Profile -------------------------------------------------
+    active: dev
+  # ---------------------------------------------------------
+  output:
+    ansi:
+      enabled: ALWAYS
+  cache:
+    type: none
+  jackson:
+    default-property-inclusion: NON_NULL
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+# /tpv-user/**, /tpv-article/**, /tpv-ticket/**
+          lower-case-service-id: true
+#      routes:
+#        - id: tpv-user
+#          uri: lb://tpv-user
+#          predicates:
+#            - Path=/oauth2/**,/users/**
+
+info:
+  app:
+    artifact: "@project.artifactId@"
+    version: "@project.version@"
+    build: "@maven.build.timestamp@"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, gateway, metrics, loggers
+  info:
+    env:
+      enabled: true
+  endpoint:
+    gateway:
+      enabled: true
+  loggers:
+    enabled: true
+
+logging:
+  level:
+    root: WARN
+    es.upm.miw: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

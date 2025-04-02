@@ -1,0 +1,18 @@
+services:
+  tpv-gateway:
+    build: .
+    image: tpv-gateway:1.1.0
+    container_name: tpv-gateway
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    networks:
+      - miw
+
+networks:
+  miw:
+    external: true
+
+#> docker compose up --build -d

@@ -1,0 +1,14 @@
+logging:
+  level:
+    es.upm.miw: DEBUG
+
+spring:
+  cloud:
+    gateway:
+      enabled: false
+eureka:
+  client:
+    enabled: false
+  instance:
+    leaseRenewalIntervalInSeconds: 0
+    leaseExpirationDurationInSeconds: 0
