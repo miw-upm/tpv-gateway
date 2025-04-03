@@ -17,7 +17,7 @@ spring:
       discovery:
         locator:
           enabled: true
-# /tpv-user/**, /tpv-article/**, /tpv-ticket/**
+          # /tpv-user/**, /tpv-article/**, /tpv-ticket/**
           lower-case-service-id: true
 #      routes:
 #        - id: tpv-user
