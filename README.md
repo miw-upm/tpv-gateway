@@ -15,14 +15,12 @@
 2. Importar el proyecto mediante **IntelliJ IDEA**  
    * **Open**, y seleccionar la carpeta del proyecto.
 
-### :gear: Ejecución en local co IntelliJ
+### :gear: Ejecución en local con IntelliJ
 * Ejecutar la clase **Application**
-```sh
-> docker compose up --build -d
-```
+
 ### :gear: Ejecución en local con Docker
-* Ejecutar en el proyecto la siguiente secuencia de comandos de Docker ( :warning: **incluir el punto final** ):
+* Ejecutar en el proyecto la siguiente secuencia de comandos de Docker:
 ```sh
-> docker compose up --build -d
+> docker compose -f docker-compose-dev.yml up --build -d
 ```
 

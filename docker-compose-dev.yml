@@ -14,4 +14,4 @@ networks:
   miw:
     external: true
 
-#> docker compose up --build -d
+#> docker compose -f docker-compose-dev.yml up --build -d

@@ -24,6 +24,7 @@ spring:
 #          uri: lb://tpv-user
 #          predicates:
 #            - Path=/oauth2/**,/users/**
+#            - After=2017-01-20T17:42:47.789-07:00[America/Denver]
 
 info:
   app:
