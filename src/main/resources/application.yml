@@ -14,11 +14,27 @@ spring:
     default-property-inclusion: NON_NULL
   cloud:
     gateway:
+      default-filters:
+        - StripPrefix=1
       discovery:
         locator:
           enabled: true
           # /tpv-user/**, /tpv-article/**, /tpv-ticket/**
           lower-case-service-id: true
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:4200"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
 #      routes:
 #        - id: tpv-user
 #          uri: lb://tpv-user
