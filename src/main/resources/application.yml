@@ -2,9 +2,9 @@ spring:
   application:
     name: tpv-gateway
   profiles:
-  # Profile -------------------------------------------------
+    # Profile -------------------------------------------------
     active: dev
-  # ---------------------------------------------------------
+  # -----------------------------------------------------------
   output:
     ansi:
       enabled: ALWAYS
@@ -14,33 +14,25 @@ spring:
     default-property-inclusion: NON_NULL
   cloud:
     gateway:
-      default-filters:
-        - StripPrefix=1
+#      default-filters:
+#        - StripPrefix=1
       discovery:
         locator:
           enabled: true
           # /tpv-user/**, /tpv-article/**, /tpv-ticket/**
           lower-case-service-id: true
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins:
-              - "http://localhost:4200"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS
-            allowedHeaders:
-              - "*"
-            allowCredentials: true
 #      routes:
-#        - id: tpv-user
+#        - id: tpv-user-well-known
 #          uri: lb://tpv-user
 #          predicates:
-#            - Path=/oauth2/**,/users/**
-#            - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+#            - Path=/tpv-user/.wll-known/**
+#          # - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+#          filters:
+#            - RewritePath=/tpv-user/(?<remaining>.*), /${remaining}
+#        - id: tpv-user-login
+#          uri: lb://tpv-user
+#          predicates:
+#            - Path=/tpv-user/**
 
 info:
   app:
