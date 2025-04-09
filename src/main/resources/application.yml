@@ -21,19 +21,49 @@ spring:
           enabled: true
           # /tpv-user/**, /tpv-article/**, /tpv-ticket/**
           lower-case-service-id: true
-#        - id: tpv-user-well-known
-#          uri: lb://tpv-user
-#          predicates:
-#            - Path=/tpv-user/.wll-known/**
-#          # - After=2017-01-20T17:42:47.789-07:00[America/Denver]
-#          filters:
-#            - RewritePath=/tpv-user/(?<remaining>.*), /${remaining}
-#        - id: tpv-user-login
-#          uri: lb://tpv-user
-#          predicates:
-#            - Path=/tpv-user/**
-#server:
-#  forward-headers-strategy: native
+      routes:
+        - id: route-tpv-user-login
+          uri: lb://tpv-user
+          predicates:
+            - Path=/login/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: "^/login(?<segment>/.*)?"
+                replacement: "/login${segment}"
+        - id: route-tpv-user-default
+          uri: lb://tpv-user
+          predicates:
+            - Path=/default-ui.css
+          filters:
+            - RewritePath=/default-ui.css,/default-ui.css
+        - id: route-tpv-user-oauth2-authorize
+          uri: lb://tpv-user
+          predicates:
+            - Path=/oauth2/authorize/**
+          filters:
+            - name: RewritePath
+              args:
+                regexp: "^/oauth2(?<segment>/.*)?"
+                replacement: "/oauth2${segment}"
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:4200"
+              - "http://localhost:8080"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+server:
+  forward-headers-strategy: native
+  use-forward-headers: true
 
 info:
   app:
